@@ -51,7 +51,7 @@ func (m *Message) Serialize() []byte {
 }
 
 // 创建 MsgReq
-func FormatRequest(idx, begin, length int) (*Message, error) {
+func FormatRequest(begin, idx, length int) *Message {
 	payLoad := make([]byte, 12)
 
 	binary.BigEndian.PutUint32(payLoad[:4], uint32(idx))
@@ -61,7 +61,7 @@ func FormatRequest(idx, begin, length int) (*Message, error) {
 	return &Message{
 		ID:      MsgRequest,
 		PayLoad: payLoad,
-	}, nil
+	}
 }
 
 // 创建 MsgHave
