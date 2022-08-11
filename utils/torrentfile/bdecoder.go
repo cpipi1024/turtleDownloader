@@ -65,7 +65,7 @@ func (bi *bencodeInfo) splitePieces() ([][20]byte, error) {
 
 // 元数据信息
 type bencodeTorrent struct {
-	Announce string      `bencode:"announce` // tacker 地址
+	Announce string      `bencode:"announce"` // tacker 地址
 	Info     bencodeInfo `bencode:"info"`
 }
 
