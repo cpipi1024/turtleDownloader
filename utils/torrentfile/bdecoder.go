@@ -9,8 +9,6 @@ import (
 	"github.com/jackpal/bencode-go"
 )
 
-const ()
-
 // 文件数据信息
 type bencodeInfo struct {
 	Pieces      string `bencode:"pieces"`       // 字节序列
@@ -50,7 +48,7 @@ func (bi *bencodeInfo) splitePieces() ([][20]byte, error) {
 	// piece的数量等于pieces的总长度/piece的长度
 	totalPieceLen := len(piecesBuf) / hashLen
 
-	if totalPieceLen != 0 {
+	if len(piecesBuf)%hashLen != 0 {
 		return [][20]byte{}, fmt.Errorf("torrent file meta info: [pieces] is malformed")
 	}
 

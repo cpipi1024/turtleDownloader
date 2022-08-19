@@ -80,7 +80,7 @@ func reciveBitField(conn net.Conn) (bitfield.BitField, error) {
 
 // 批量创建多个client与传入的peer通信
 func NewClient(peer peers.Peer, peerID, infohash [20]byte) (*Client, error) {
-	conn, err := net.DialTimeout("TCP", peer.String(), 5*time.Second)
+	conn, err := net.DialTimeout("tcp", peer.String(), 5*time.Second)
 	if err != nil {
 		return nil, err
 	}
